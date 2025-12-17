@@ -15,6 +15,9 @@ from src.claims.metrics import (
     save_pareto_figure,
     save_top_dx_figure,
 )
+from scripts.gen_data_dictionary import generate_data_dictionary
+from scripts.render_decision_memo import render_decision_memo
+from scripts.render_readme import render_readme
 
 
 def _pick_input_path(project_root: Path, input_arg: str | None) -> Path:
@@ -391,6 +394,34 @@ def main() -> int:
     print(f"- Clean dataset: {str(clean_csv.as_posix())}")
     print(f"- KPIs: {str(kpis_summary_csv.as_posix())}")
     print(f"- Figures: {str((outputs_dir / 'figures').as_posix())}")
+
+    # Render documentation (pulls from outputs, ensures drift is impossible)
+    print("")
+    print("Rendering documentation...")
+    
+    readme_path = project_root / "README.md"
+    render_readme(
+        kpis_summary_csv,
+        analyses["cost_concentration_csv"],
+        output_path=readme_path,
+    )
+    print(f"✓ Rendered: {readme_path}")
+
+    memo_path = project_root / "docs" / "decision_memo.md"
+    render_decision_memo(
+        kpis_summary_csv,
+        analyses["cost_concentration_csv"],
+        analyses["anomalies_csv"],
+        output_path=memo_path,
+    )
+    print(f"✓ Rendered: {memo_path}")
+
+    dict_path = project_root / "docs" / "data_dictionary.md"
+    generate_data_dictionary(clean_csv, output_path=dict_path)
+    print(f"✓ Generated: {dict_path}")
+    
+    print("")
+    print("✓ All documentation generated and synchronized with outputs.")
 
     return 0
 
