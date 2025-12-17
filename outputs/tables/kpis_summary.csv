@@ -1,0 +1,2 @@
+row_count,column_count,total_billed_amount,avg_claim_amount,median_claim_amount,p95_claim_amount,min_claim_amount,max_claim_amount,unique_patients,unique_diagnoses,top_diagnosis_code,top_diagnosis_total_billed,top_diagnosis_pct_of_total,date_min,date_max,member_months,pmpm_billed
+1000,15,297191.0,297.19,297.0,480.0,100.0,500.0,1000,100,A05.4,5872.0,1.98,2024-05-01,2024-09-20,1000,297.191

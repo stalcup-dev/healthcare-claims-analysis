@@ -1,0 +1,14 @@
+metric,value
+row_count,1000
+column_count,15
+total_billed_amount,297191.00
+avg_claim_amount,297.19
+median_claim_amount,297.00
+p95_claim_amount,480.00
+unique_patients,1000
+unique_diagnoses,100
+top_diagnosis_code,A05.4
+top_diagnosis_total_billed,5872.00
+top_diagnosis_pct_of_total,1.98
+date_min,2024-05-01
+date_max,2024-09-20

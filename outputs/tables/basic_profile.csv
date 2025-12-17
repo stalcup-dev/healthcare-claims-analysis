@@ -1,0 +1,19 @@
+metric,value
+row_count,1000
+column_count,15
+date_column,Date of Service
+date_parse_failures,0
+date_min,2024-05-01
+date_max,2024-09-20
+Billed Amount__min,100
+Billed Amount__max,500
+Billed Amount__mean,297.191
+Allowed Amount__min,64
+Allowed Amount__max,442
+Allowed Amount__mean,223.112
+Paid Amount__min,53
+Paid Amount__max,423
+Paid Amount__mean,200.754
+claim_id_column,Claim ID
+duplicate_claim_id_count,0
+grain_guess,One row per claim (unique Claim ID).
