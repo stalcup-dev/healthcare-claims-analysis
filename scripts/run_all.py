@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -347,10 +348,20 @@ def main() -> int:
         help="Path to input CSV (default: claim_data.csv if present)",
         default=None,
     )
+    parser.add_argument(
+        "--output-dir",
+        help="Output directory (default: ./outputs or env var OUTPUT_DIR)",
+        default=None,
+    )
     args = parser.parse_args()
 
     project_root = Path(__file__).resolve().parents[1]
-    outputs_dir = project_root / "outputs"
+    
+    # Support OUTPUT_DIR env var for testing
+    if args.output_dir:
+        outputs_dir = Path(args.output_dir)
+    else:
+        outputs_dir = Path(os.getenv("OUTPUT_DIR", str(project_root / "outputs")))
 
     input_csv = _pick_input_path(project_root, args.input)
 
@@ -405,7 +416,7 @@ def main() -> int:
         analyses["cost_concentration_csv"],
         output_path=readme_path,
     )
-    print(f"✓ Rendered: {readme_path}")
+    print(f"[+] Rendered: {readme_path}")
 
     memo_path = project_root / "docs" / "decision_memo.md"
     render_decision_memo(
@@ -414,14 +425,14 @@ def main() -> int:
         analyses["anomalies_csv"],
         output_path=memo_path,
     )
-    print(f"✓ Rendered: {memo_path}")
+    print(f"[+] Rendered: {memo_path}")
 
     dict_path = project_root / "docs" / "data_dictionary.md"
     generate_data_dictionary(clean_csv, output_path=dict_path)
-    print(f"✓ Generated: {dict_path}")
+    print(f"[+] Generated: {dict_path}")
     
     print("")
-    print("✓ All documentation generated and synchronized with outputs.")
+    print("[+] All documentation generated and synchronized with outputs.")
 
     return 0
 
