@@ -35,6 +35,10 @@ Python-based analysis of synthetic healthcare claims data. Identifies top diagno
 - **Visualization**: Using bar and line plots for effective storytelling with data
 - **Time-Series Analysis**: Monthly trend identification for healthcare forecasting
 - **Domain Knowledge**: Understanding ICD codes, billed amounts, and insurance workflows
+- **Deeper Insights & Dashboard**: Added a summary dashboard section with key metrics and bullet insights for quick executive review.
+- **Cost Concentration Analysis**: Calculated the percentage of total costs contributed by the top 10 patients, revealing cost distribution patterns.
+- **ICD Code Mapping**: Mapped common ICD codes to human-readable descriptions for better interpretability in outputs and reports.
+- **Anomaly Detection**: Flagged high-cost patients (top 1% by average claim) to support fraud detection and care management use cases.
 
 ## Project Scope
 
@@ -46,6 +50,32 @@ Built as a 3-day structured project for portfolio demonstration and interview pr
 - **NumPy**: Numerical computing
 - **Matplotlib**: Data visualization
 - **Jupyter**: Interactive notebook environment
+
+## Visualizations
+
+### Distribution Analysis
+![Distribution of Claim Amounts & Cost per Patient](visualizations/distribution_analysis.png)
+
+**Key Insights:**
+- **Histogram**: Claim amounts are uniformly distributed between $100 and $500, showing consistent billing patterns across the dataset
+- **Box Plot**: Cost distribution per patient reveals the spread and concentration of expenses, with the median representing typical patient costs
+
+### Diagnosis Trends & Cost Drivers
+![Top 5 Diagnoses & Monthly Trends](visualizations/diagnosis_trends.png)
+
+**Key Insights:**
+- **Bar Chart**: Type 2 Diabetes (E11) and Essential Hypertension (I10) are the leading cost drivers, accounting for the majority of healthcare spending
+- **Line Chart**: Monthly billed amounts show relative stability with minor fluctuations, useful for forecasting and budget planning
+
+### Summary Dashboard
+
+- **Total Patients:** 1000
+- **Total Claims:** 1000
+- **Total Billed Amount:** $297,000
+- **Average Claim Amount:** $297
+- **Top Diagnosis:** E11 (Type 2 Diabetes)
+- **Top 10 Patients Account for:** 10% of total costs
+- **Anomalies Detected:** 0 patients above the 99th percentile threshold
 
 ## Future Enhancements
 
